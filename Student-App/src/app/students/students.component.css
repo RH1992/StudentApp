@@ -1,0 +1,63 @@
+div.h1{
+    font-family: raleway;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 27px;
+}
+.card {
+    margin: 0 auto; /* Added */
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+}
+
+
+div.p{
+    font-family: raleway;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: 10px;
+}
+.inputTag {
+    width:400px !important;
+    margin: 0 auto;
+    float: none; 
+    margin-bottom: 10px;
+}
+.form-width{
+    width: 100%;
+}
+
+.student-section {
+    overflow: hidden;
+    padding: 16px;
+    background-color: #fafafa;
+    border: none;
+    outline: none;
+    transition: 2s ease-out;
+    padding-right: 4%;
+}
+
+.grade-list {
+    font-family: raleway;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: 10px;
+    padding-right: 10px;
+}
+
+.circular_image {
+    border: 1px solid rgb(34, 32, 32);
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color:#e7e4e4;
+    display:inline-block;
+    vertical-align:middle;
+  }
+  .circular_image img{
+    width:100%;
+  }

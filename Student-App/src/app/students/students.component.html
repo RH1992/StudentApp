@@ -1,0 +1,59 @@
+<cdk-virtual-scroll-viewport itemSize="100" style="height: 900px;">
+    <div class="card" style="width: 65rem;">
+        <div class="card-body">
+            <mat-form-field class="form-width" appearance="fill">
+                <input matInput placeholder="Search by name" [(ngModel)]='listFilter'>
+            </mat-form-field>
+            <mat-form-field class="form-width" appearance="fill">
+
+                <input matInput placeholder="Search by tag" [(ngModel)]="filterTag" (input)="searchTag(filterTag)">
+            </mat-form-field>
+            <ul class="list-group list-group-flush" *cdkVirtualFor="let student of filteredStudents">
+                <div class="row">
+
+                    <div class="col-md-2">
+                        <div class="circular_image">
+                            <img [src]="student.pic" />
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <h1><strong>{{student.firstName | uppercase}} {{student.lastName | uppercase}}</strong></h1>
+                        <p>Email:{{student.email}}</p>
+                        <p>Company:{{student.company}}</p>
+                        <p>Skill:{{student.skill}}</p>
+                        <p>Average:{{student['avg']}}%</p>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="student-header" (click)="viewList(student.id)"
+                            [class.student-header-selected]="student.show">
+                            <mat-icon *ngIf='!student.show' color="primary">add</mat-icon>
+                            <mat-icon *ngIf='student.show' color="primary">remove</mat-icon>
+
+                        </button>
+                    </div>
+
+                    <div id="tab_{{student.id}}" [@openClose]="student.show ? 'open' : 'closed'"
+                        class="student-section">
+                        <div *ngFor='let grade of student.grades let i = index'>
+                            <p class="grade-list">Test {{i + 1}}:&nbsp;&nbsp;&nbsp;&nbsp;{{grade}}%</p>
+                        </div>
+                    </div>
+                    <div>
+                        <mat-chip-list #taglist>
+                            <mat-chip selected color="grey" *ngFor="let tags of student.tag">{{tags}}
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
+
+                    <mat-form-field class="inputTag">
+                        <input matInput placeholder="Add a Tag" [matChipInputFor]="taglist"
+                            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                            (matChipInputTokenEnd)="add($event, student.id)">
+                    </mat-form-field>
+
+                </div>
+            </ul>
+        </div>
+
+    </div>
+</cdk-virtual-scroll-viewport>
